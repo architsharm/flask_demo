@@ -10,7 +10,7 @@ def client():
 def test_home(client):    
     resp = client.get('/ping')
     assert resp.status_code == 200
-    assert resp.json == {"test":"hello1"}
+    assert resp.json == {"test":"hello"}
 
 def test_predict(client):    
     loan_application = {
