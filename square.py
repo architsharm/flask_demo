@@ -1,2 +1,2 @@
-def get_square(a):
-    return a*a
+def get_square(x):
+    return x*x

@@ -1,27 +1,25 @@
 import pytest
+
 from model import app
 
 @pytest.fixture
 def client():
     return app.test_client()
 
+
 def test_home(client):    
     resp = client.get('/ping')
     assert resp.status_code == 200
+    assert resp.json == {"test":"hello"}
 
-
-def test_predict(client):
-    test_data={
+def test_predict(client):    
+    loan_application = {
     'Gender': "Male",
     'Married': "Unmarried",
     'ApplicantIncome': 50000,
     'Credit_History': "Cleared Debts",
     'LoanAmount': 500000
 }
-    resp=client.post('/predict', json=test_data)
+    resp = client.post('/predict',json=loan_application)
     assert resp.status_code == 200
-    print(resp)
-    assert resp.text=='Rejected'
-
-
-    
+    assert resp.text == "Rejected"

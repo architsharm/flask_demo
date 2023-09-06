@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route("/ping")
 def ping():
-    return "hello"
+    return {"test":"hello"}
 
 @app.route("/predict", methods=['POST'])
 def prediction():
